@@ -48,3 +48,6 @@ class Checker:
         def download_file(self):
             browser.element('.phone-checker-history__download').should(be.visible).click()
             time.sleep(10)
+
+
+phone_checker = Checker()
