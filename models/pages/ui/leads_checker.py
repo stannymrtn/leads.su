@@ -1,19 +1,9 @@
 from selene import browser, be, have
-from selene.support.shared import browser
 import allure
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from script_os import TMP_DIR
 import time
-from selenium.webdriver.chrome.service import Service
 
 
 class Checker:
-
-    def __init__(self, driver):
-        self.driver = driver
-        browser.config.driver = driver
-
     with allure.step('Открытие страницы Чекера'):
         def open_checker(self):
             browser.open('/app/phone-checker')
@@ -58,14 +48,3 @@ class Checker:
         def download_file(self):
             browser.element('.phone-checker-history__download').should(be.visible).click()
             time.sleep(10)
-
-
-options = webdriver.ChromeOptions()
-prefs = {
-    "download.default_directory": TMP_DIR,
-    "download.prompt_for_download": False
-}
-options.add_experimental_option("prefs", prefs)
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-phone_checker = Checker(driver)

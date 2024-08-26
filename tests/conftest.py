@@ -1,21 +1,11 @@
 import os
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selene import browser
 from utils import attach
 from dotenv import load_dotenv
-
-
-DEFAULT_BROWSER_VERSION = "100.0"
-
-
-def pytest_addoption(parser):
-    parser.addoption(
-        '--browser_version',
-        default='100.0'
-    )
+from script_os import TMP_DIR
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -25,8 +15,16 @@ def load_env():
 
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser(request):
-    browser_version = request.config.getoption('--browser_version')
+    browser_version = request.config.getoption('--browser_version', default='100.0')
+
     options = Options()
+
+    prefs = {
+        "download.default_directory": TMP_DIR,
+        "download.prompt_for_download": False
+    }
+    options.add_experimental_option("prefs", prefs)
+
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
@@ -44,6 +42,7 @@ def setup_browser(request):
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         options=options
     )
+
     browser.config.base_url = 'https://webmaster.leads.su'
     browser.config.window_width = 1920
     browser.config.window_height = 1080
