@@ -29,16 +29,13 @@ class Checker:
             input_field.click()
             browser.element('#vs1__option-1').click()
             browser.element('//span[text()="Название базы"]/parent::div').click()
-            browser.element(
-                '//span[text()="Номера телефонов (не более 10 000 номеров)"]/following-sibling::textarea').type(
+            browser.element('//span[text()="Номера телефонов (не более 10 000 номеров)"]/following-sibling::textarea').type(
                 '123')
 
     with allure.step('Проверка работы кнопки отправки'):
         def check_input_buttons(self):
-            browser.element(
-                '//div[contains(@class, "phone-checker-entry__field_actions")]//button[contains(text(), "Очистить поле")]').click()
-            browser.element(
-                '//span[text()="Номера телефонов (не более 10 000 номеров)"]/following-sibling::textarea').type(
+            browser.element('//div[contains(@class, "phone-checker-entry__field_actions")]//button[contains(text(), "Очистить поле")]').click()
+            browser.element('//span[text()="Номера телефонов (не более 10 000 номеров)"]/following-sibling::textarea').type(
                 '123')
             browser.element(
                 '//div[contains(@class, "phone-checker-entry__field_actions")]//button[contains(text(), "Отправить на проверку")]').click()
