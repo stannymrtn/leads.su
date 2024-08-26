@@ -2,15 +2,15 @@
 <a target="_blank" href="https://leads.su/">Сайт проекта</a>
 
 ## Содержание
-- [Стек](#earth_africa-технологии-и-инструменты)
-- [Примеры UI тестов](#pager-Примеры-UI-тестов)
-- [Примеры API тестов](#scroll-Примеры-API-тестов)
-- [Сборка](#-Сборка-в-Jenkins-с-параметрами)
-- [Allure отчет](#-Allure-отчет)
-- [Отчет в Telegram](#-Отчет-в-Telegram-с-помощью-бота)
-- [Видео прохождения тестов](#film_projector-Видео-прохождения-тестов-на-Selenoid)
+- [Стек](#стек)
+- [Примеры UI тестов](#примеры-ui-тестов)
+- [Примеры API тестов](#примеры-api-тестов)
+- [Сборка](#сборка)
+- [Allure отчет](#allure-отчет)
+- [Отчет в Telegram](#отчет-в-telegram)
+- [Видео прохождения тестов](#видео-прохождения-тестов)
 
-## Технологии и инструменты
+## Стек
 <p>
 <a href="https://www.jetbrains.com/pycharm/"><img src="utils/images/PyCharm_Icon.svg" width="50" height="50"  alt="Pycharm" title="IntelliJ IDEA"/></a>
 <a href="https://www.python.org/"><img src="utils/images/python.svg" width="50" height="50"  alt="Python" title="Python"/></a>
@@ -65,7 +65,7 @@
 <img title="Allure отчет" src="utils/images/allure-report_2.png">
 </p>
 
-## Отчет в Telegram с помощью бота
+## Отчет в Telegram
 >
 > Далее в <code>Telegram</code>чат автоматически приходит уведомление с информацией о прогоне и ссылкой на <code>Allure</code>
 >
@@ -73,7 +73,7 @@
 <img title="Отчет в Telegram с помощью бота" src="utils/images/allure_tg.png">
 </p>
 
-## Видео прохождения тестов на Selenoid
+## Видео прохождения тестов
 >
 > <code>Selenoid</code> пишет видео прогона каждого теста и видео прикладывается в отчет <code>Allure</code>
 >
