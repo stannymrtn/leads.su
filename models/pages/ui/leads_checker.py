@@ -1,6 +1,5 @@
-from selene import browser, be, have
+from selene import browser, be, have, by
 import allure
-
 
 
 class Checker:
@@ -22,7 +21,9 @@ class Checker:
     with allure.step('Ввод значений в поля'):
         def check_input_fields(self):
             browser.open('/app/phone-checker')
-            browser.element( 'div.phone-checker-entry__field div.lds-input-placeholder input.lds-input-placeholder__field').type('12345678')
+            browser.element(
+                'div.phone-checker-entry__field div.lds-input-placeholder input.lds-input-placeholder__field').type(
+                '12345678')
             browser.element('div.vs__selected-options input.vs__search').click()
             browser.element('#vs1__option-1').click()
             browser.element(
@@ -31,11 +32,9 @@ class Checker:
 
     with allure.step('Проверка работы кнопки отправки'):
         def check_input_buttons(self):
-            browser.element('//div[contains(@class, "phone-checker-entry__field_actions")]//button[contains(text(), "Очистить поле")]').click()
-            browser.element('//span[text()="Номера телефонов (не более 10 000 номеров)"]/following-sibling::textarea').type(
-                '123')
-            browser.element(
-                '//div[contains(@class, "phone-checker-entry__field_actions")]//button[contains(text(), "Отправить на проверку")]').click()
+            browser.element(by.text('Очистить поле')).click()
+            browser.element('div.phone-checker-entry__field textarea.lds-input-placeholder__field').type('123')
+            browser.element(by.text('Отправить на проверку')).click()
             browser.element('.phone-checker-history__item').should(be.not_.blank)
 
     with allure.step('Проверка скачивания'):
