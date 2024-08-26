@@ -21,7 +21,6 @@ class Pin_offer:
             element = browser.element('//img[contains(@src, "10945")]')
             element.perform(command.js.scroll_into_view)
             element.should(be.visible)
-            time.sleep(10)
 
 
 pin_offer = Pin_offer()

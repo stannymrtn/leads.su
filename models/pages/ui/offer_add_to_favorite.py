@@ -1,7 +1,5 @@
 import allure
-from selene import browser, be, by, have, command
-import time
-
+from selene import browser, be, command
 
 class Add_to_favorite:
 
@@ -19,14 +17,12 @@ class Add_to_favorite:
     with allure.step('Добавить оффер в избранное'):
         def add_to_favorite(self):
             browser.element('[href="/offers/1051/default/favorite"]').click()
-            time.sleep(10)
 
     with allure.step('Проверка добавления оффера в избранное'):
         def check_favorites(self):
             browser.open('/offers/default/favoriteOffers')
             browser.element('//img[contains(@src, "1051")]').should(be.visible)
             browser.element('[href="/offers/1051/default/favorite"]').click()
-            time.sleep(5)
             browser.element('//a[span[text()="В избранное"]]').should(be.visible)
 
 
