@@ -24,12 +24,12 @@
 
 В проекте автотесты написаны на <code>Python</code> с использованием <code>Selenium</code>, <code>Selene</code> и <code>Pytest</code> для UI-тестов
 >
-> <code>Selenoid</code> выполняет запуск браузеров в контейнерах <code>Docker</code>.
+> <code>Selenoid</code> Запускает браузеры в контейнерах <code>Docker</code>.
 >
-> <code>Allure Report</code> формирует отчет о запуске тестов.
+> <code>Allure Report</code> Формирует отчеты о запуске тестов.
 >
-> <code>Jenkins</code> выполняет запуск тестов.
-> После завершения прогона отправляются уведомления с помощью бота в <code>Telegram</code>.
+> <code>Jenkins</code> Выполняет запуск самих тестов.
+> После завершения прогона отправляются уведомления в <code>Telegram</code>.
 
 
 ## Примеры UI тестов
