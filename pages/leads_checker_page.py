@@ -4,22 +4,26 @@ import allure
 
 class Checker:
     with allure.step('Открытие страницы Чекера'):
-        def open_checker(self):
+        @staticmethod
+        def open_checker():
             browser.open('/app/phone-checker')
 
     with allure.step('Проверка отображения заголовка'):
-        def check_header_elements(self):
+        @staticmethod
+        def check_header_elements():
             browser.element('.phone-checker-header__title').should(have.text('Checker'))
             browser.all('.phone-checker-offers__item').should(have.size(20))
 
     with allure.step('Проверка блока API-интеграция'):
-        def check_block_api_integration(self):
+        @staticmethod
+        def check_block_api_integration():
             browser.element('#phone-checker-integration-token').should(be.not_.blank)
             browser.element('#popover-check-phones-request').should(be.not_.blank)
             browser.element('#popover-get-report-request').should(be.not_.blank)
 
     with allure.step('Ввод значений в поля'):
-        def check_input_fields(self):
+        @staticmethod
+        def check_input_fields():
             browser.open('/app/phone-checker')
             browser.element(
                 'div.phone-checker-entry__field div.lds-input-placeholder input.lds-input-placeholder__field').type(
@@ -31,14 +35,16 @@ class Checker:
             browser.element('div.phone-checker-entry__field textarea.lds-input-placeholder__field').type('123')
 
     with allure.step('Проверка работы кнопки отправки'):
-        def check_input_buttons(self):
+        @staticmethod
+        def check_input_buttons():
             browser.element(by.text('Очистить поле')).click()
             browser.element('div.phone-checker-entry__field textarea.lds-input-placeholder__field').type('123')
             browser.element(by.text('Отправить на проверку')).click()
             browser.element('.phone-checker-history__item').should(be.not_.blank)
 
     with allure.step('Проверка скачивания'):
-        def download_file(self):
+        @staticmethod
+        def download_file():
             browser.element('.phone-checker-history__download').should(be.visible).click()
 
 

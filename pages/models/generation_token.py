@@ -2,7 +2,7 @@ import allure
 from selene import browser, be, have
 
 
-class Generation_token:
+class GenerationToken:
 
     with allure.step('Открытие страницы просмотра аккаунта'):
         def open_account_page(self):
@@ -19,4 +19,4 @@ class Generation_token:
             element.should(have.text('Новый токен успешно сгенерирован'))
 
 
-generation_token = Generation_token()
+generation_token = GenerationToken()

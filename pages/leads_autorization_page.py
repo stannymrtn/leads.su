@@ -5,11 +5,13 @@ import os
 
 class AuthenticationForm:
     with allure.step('Открытие страницы'):
-        def open(self):
+        @staticmethod
+        def open():
             browser.open('/login')
 
     with allure.step('Ввод логина и пароля'):
-        def logpass_enter(self):
+        @staticmethod
+        def logpass_enter():
             login = os.getenv('LOG')
             password = os.getenv('PASS')
             browser.element('#webmaster_models_web_LoginForm_email').type(login)
@@ -17,7 +19,8 @@ class AuthenticationForm:
             browser.element('[type=submit]').click()
 
     with allure.step('Проверка входа'):
-        def check_id(self):
+        @staticmethod
+        def check_id():
             browser.element('.home').get(query.attribute('.user-info__id'))
             browser.element('.user-info__id').should(have.text('ID 197767'))
 

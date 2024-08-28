@@ -1,10 +1,10 @@
 import allure
 from allure_commons.types import Severity
-from models.pages.ui.leads_autorization_page import authentication_form
-from models.pages.ui.leads_checker import phone_checker
-from models.pages.ui.pin_offer import pin_offer
-from models.pages.ui.generation_token import generation_token
-from models.pages.ui.offer_add_to_favorite import add_to_favorite
+from pages.leads_autorization_page import authentication_form
+from pages.leads_checker_page import phone_checker
+from pages.models.generation_token import generation_token
+from pages.offers_page import offer_page
+
 
 @allure.tag("web")
 @allure.severity(Severity.NORMAL)
@@ -12,10 +12,11 @@ from models.pages.ui.offer_add_to_favorite import add_to_favorite
 @allure.feature("Авторизация ЛКВ")
 @allure.story("Тестирование формы авторизации ЛКВ")
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
-def test_autorization(setup_browser):
+def test_authorization(setup_browser):
     authentication_form.open()
     authentication_form.logpass_enter()
     authentication_form.check_id()
+
 
 @allure.tag("web")
 @allure.severity(Severity.NORMAL)
@@ -33,18 +34,6 @@ def test_checker():
     phone_checker.check_input_buttons()
     phone_checker.download_file()
 
-@allure.tag("web")
-@allure.severity(Severity.NORMAL)
-@allure.label("owner", "Timur")
-@allure.feature("Каталог офферов")
-@allure.story("Тестирование закреплённого оффера")
-@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
-def test_pin_offer():
-    authentication_form.open()
-    authentication_form.logpass_enter()
-    pin_offer.open_offers_page()
-    pin_offer.scroll_page()
-    pin_offer.check_pin_offer()
 
 @allure.tag("web")
 @allure.severity(Severity.NORMAL)
@@ -59,16 +48,19 @@ def test_generation_token():
     generation_token.press_key()
     generation_token.check_message()
 
+
 @allure.tag("web")
 @allure.severity(Severity.NORMAL)
 @allure.label("owner", "Timur")
 @allure.feature("Каталог офферов")
-@allure.story("Тестирование добавления оффера в избранное")
+@allure.story("Тестирование скролла на странице и добавления оффера в избранное")
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
-def test_add_to_favorite_offer():
+def test_offer_page():
     authentication_form.open()
     authentication_form.logpass_enter()
-    add_to_favorite.open_page()
-    add_to_favorite.check_offer()
-    add_to_favorite.add_to_favorite()
-    add_to_favorite.check_favorites()
+    offer_page.open_page()
+    offer_page.scroll_page()
+    offer_page.check_pin_offer()
+    offer_page.check_offer()
+    offer_page.add_to_favorite()
+    offer_page.check_favorites()

@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selene import browser
 from utils import attach
 from dotenv import load_dotenv
-from script_os import TMP_DIR
+from utils.script_os import TMP_DIR
 
 
 @pytest.fixture(scope='session', autouse=True)
