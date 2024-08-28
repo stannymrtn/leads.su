@@ -11,7 +11,7 @@ class Instructions:
 
     @staticmethod
     def check_search():
-        with allure.step('Првоерка результата'):
+        with allure.step('Проверка результата'):
             browser.element('[href="/help/instruction/view/tipy-trafika"]').should(be.visible)
 
 
