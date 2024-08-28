@@ -4,6 +4,7 @@ from pages.leads_autorization_page import authentication_form
 from pages.leads_checker_page import phone_checker
 from pages.models.generation_token import generation_token
 from pages.offers_page import offer_page
+from pages.models.open_instruction_search import instructions
 
 
 @allure.tag("web")
@@ -14,7 +15,7 @@ from pages.offers_page import offer_page
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_authorization(setup_browser):
     authentication_form.open()
-    authentication_form.logpass_enter()
+    authentication_form.pass_enter()
     authentication_form.check_id()
 
 
@@ -26,7 +27,7 @@ def test_authorization(setup_browser):
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_checker():
     authentication_form.open()
-    authentication_form.logpass_enter()
+    authentication_form.pass_enter()
     phone_checker.open_checker()
     phone_checker.check_header_elements()
     phone_checker.check_block_api_integration()
@@ -43,7 +44,7 @@ def test_checker():
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_generation_token():
     authentication_form.open()
-    authentication_form.logpass_enter()
+    authentication_form.pass_enter()
     generation_token.open_account_page()
     generation_token.press_key()
     generation_token.check_message()
@@ -57,10 +58,22 @@ def test_generation_token():
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_offer_page():
     authentication_form.open()
-    authentication_form.logpass_enter()
+    authentication_form.pass_enter()
     offer_page.open_page()
     offer_page.scroll_page()
     offer_page.check_pin_offer()
     offer_page.check_offer()
     offer_page.add_to_favorite()
     offer_page.check_favorites()
+
+@allure.tag("web")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Timur")
+@allure.feature("Страница с инструкцией для вебмастера")
+@allure.story("Тестирование строки поиска на странице инструкции вебмастера")
+@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
+def test_instructions_page():
+    authentication_form.open()
+    authentication_form.pass_enter()
+    instructions.search_field()
+    instructions.check_search()

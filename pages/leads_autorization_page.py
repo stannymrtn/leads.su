@@ -11,7 +11,7 @@ class AuthenticationForm:
 
     with allure.step('Ввод логина и пароля'):
         @staticmethod
-        def logpass_enter():
+        def pass_enter():
             login = os.getenv('LOG')
             password = os.getenv('PASS')
             browser.element('#webmaster_models_web_LoginForm_email').type(login)
