@@ -8,7 +8,6 @@ from allure_commons.types import Severity
 from utils.resource import schema_path
 from jsonschema import validate
 
-
 BASE_URL = 'https://api.trello.com'
 
 
@@ -19,11 +18,14 @@ def board_id():
     params = {
         'name': 'Тестовая доска',
         'key': os.getenv('KEY'),
-        'token': os.getenv('TOKEN')
+        'token': os.getenv('TOKEN'),
+        'idOrganization': os.getenv('ORGANIZATION')
     }
 
     response = requests.post(url, params=params)
-    assert response.status_code == 200
+    print("Response status code:", response.status_code)
+    print("Response body:", response.text)
+    assert response.status_code == 200, f"Ошибка при создании доски: {response.status_code}, {response.text}"
 
     body = response.json()
     board_id = body.get('id')
@@ -91,6 +93,7 @@ def test_get_board(board_id):
 
     with allure.step('Проверяем что статус кода == 200'):
         assert response.status_code == 200
+
 
 @allure.tag("API")
 @allure.severity(Severity.NORMAL)
