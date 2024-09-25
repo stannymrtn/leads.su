@@ -66,6 +66,7 @@ def test_offer_page():
     offer_page.add_to_favorite()
     offer_page.check_favorites()
 
+
 @allure.tag("web")
 @allure.severity(Severity.NORMAL)
 @allure.label("owner", "Timur")
