@@ -12,7 +12,7 @@ class Checker:
     def check_header_elements():
         with allure.step('Проверка отображения заголовка'):
             browser.element('.phone-checker-header__title').should(have.text('Checker'))
-            browser.all('.phone-checker-offers__item').should(have.size(20))
+            browser.all('.phone-checker-offers__item').should(have.size(18))
 
     @staticmethod
     def check_block_api_integration():
