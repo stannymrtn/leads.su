@@ -14,7 +14,7 @@
 <p>
 <a href="https://www.jetbrains.com/pycharm/"><img src="resources/images/PyCharm_Icon.svg" width="50" height="50"  alt="Pycharm" title="IntelliJ IDEA"/></a>
 <a href="https://www.python.org/"><img src="resources/images/python.svg" width="50" height="50"  alt="Python" title="Python"/></a>
-<a href="https://github.com/"><img src="utils/resources/Github.svg" width="50" height="50"  alt="Github" title="GitHub"/></a>
+<a href="https://github.com/"><img src="resources/images/Github.svg" width="50" height="50"  alt="Github" title="GitHub"/></a>
 <a href="https://www.selenium.dev/"><img src="resources/images/selenium.svg" width="50" height="50"  alt="Selenium" title="Selenium"/></a>
 <a href="https://aerokube.com/selenoid/"><img src="resources/images/Selenoid.svg" width="50" height="50"  alt="Selenoid" title="Selenoid"/></a>
 <a href="https://github.com/allure-framework/allure2"><img src="resources/images/Allure_Report.svg" width="50" height="50"  alt="Allure" title="Allure"/></a>
@@ -41,7 +41,12 @@
 
 
 ## Примеры API тестов
-- В разработке
+- API тесты были написаны на трекер trello.com:
+
+Проверка создания рабочей доски
+Проверка изменения рабочей доски
+Получение информации о рабочей доске
+Удаление рабочей доски
 
 ##  Сборка
 >
