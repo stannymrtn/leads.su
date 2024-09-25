@@ -7,13 +7,14 @@ import allure
 from allure_commons.types import Severity
 from utils.resource import schema_path
 from jsonschema import validate
-load_dotenv()
+
 
 BASE_URL = 'https://api.trello.com'
 
 
 @pytest.fixture
 def board_id():
+    load_dotenv()
     url = f"{BASE_URL}/1/boards"
     params = {
         'name': 'Тестовая доска',
