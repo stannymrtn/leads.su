@@ -1,5 +1,5 @@
 import allure
-from selene import browser, have, query
+from selene import browser, have, query, Config
 import os
 
 
@@ -21,6 +21,7 @@ class AuthenticationForm:
     @staticmethod
     def check_id():
         with allure.step('Проверка входа'):
+            Config.timeout = 10
             browser.element('.home').get(query.attribute('.user-info__id'))
             browser.element('.user-info__id').should(have.text('ID 197767'))
 

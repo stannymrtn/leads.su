@@ -10,3 +10,4 @@ TMP_DIR = os.path.join(CURRENT_DIR, "resources")
 
 if not os.path.exists("../resources"):
     os.mkdir("../resources")
+

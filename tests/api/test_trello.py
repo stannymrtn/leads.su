@@ -144,7 +144,8 @@ def test_delete_board(board_id):
     url = f"{BASE_URL}/1/boards/{board_id}"
     params = {
         'key': os.getenv('KEY'),
-        'token': os.getenv('TOKEN')
+        'token': os.getenv('TOKEN'),
+        'idOrganization': os.getenv('ORGANIZATION')
     }
 
     delete_response = requests.delete(url, params=params)
