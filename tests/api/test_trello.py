@@ -1,6 +1,7 @@
 import json
 import os
 import requests
+import logging
 import pytest
 from dotenv import load_dotenv
 import allure
@@ -9,6 +10,10 @@ from utils.resource import schema_path
 from jsonschema import validate
 
 BASE_URL = 'https://api.trello.com'
+
+# Настройка логирования
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 @pytest.fixture
@@ -22,9 +27,10 @@ def board_id():
         'idOrganization': os.getenv('ORGANIZATION')
     }
 
+    logger.info(f"Sending POST request to {url} with params: {params}")
     response = requests.post(url, params=params)
-    print("Response status code:", response.status_code)
-    print("Response body:", response.text)
+    logger.info(f"Response status code: {response.status_code}")
+    logger.info(f"Response body: {response.text}")
     assert response.status_code == 200, f"Ошибка при создании доски: {response.status_code}, {response.text}"
 
     body = response.json()
@@ -60,7 +66,11 @@ def test_update_board(board_id):
         'token': os.getenv('TOKEN')
     }
 
+    logger.info(f"Sending PUT request to {url} with params: {params}")
     response = requests.put(url, params=params)
+
+    logger.info(f"Response status code: {response.status_code}")
+    logger.info(f"Response body: {response.text}")
 
     with allure.step('Проверяем что статус кода == 200'):
         assert response.status_code == 200
@@ -89,7 +99,11 @@ def test_get_board(board_id):
         'token': os.getenv('TOKEN')
     }
 
+    logger.info(f"Sending GET request to {url} with params: {params}")
     response = requests.get(url, params=params)
+
+    logger.info(f"Response status code: {response.status_code}")
+    logger.info(f"Response body: {response.text}")
 
     with allure.step('Проверяем что статус кода == 200'):
         assert response.status_code == 200
@@ -109,7 +123,13 @@ def test_create_label(board_id):
         'token': os.getenv('TOKEN'),
         'color': "null"
     }
+
+    logger.info(f"Sending POST request to {url} with params: {params}")
     response = requests.post(url, params=params)
+
+    logger.info(f"Response status code: {response.status_code}")
+    logger.info(f"Response body: {response.text}")
+
     with allure.step('Проверяем что статус кода == 200'):
         assert response.status_code == 200
 
@@ -129,7 +149,12 @@ def test_create_list(board_id):
         'token': os.getenv('TOKEN')
     }
 
+    logger.info(f"Sending POST request to {url} with params: {params}")
     response = requests.post(url, params=params)
+
+    logger.info(f"Response status code: {response.status_code}")
+    logger.info(f"Response body: {response.text}")
+
     with allure.step('Проверяем что после добавления статус-код == 200'):
         assert response.status_code == 200
 
@@ -148,7 +173,11 @@ def test_delete_board(board_id):
         'idOrganization': os.getenv('ORGANIZATION')
     }
 
+    logger.info(f"Sending DELETE request to {url} with params: {params}")
     delete_response = requests.delete(url, params=params)
+
+    logger.info(f"Response status code: {delete_response.status_code}")
+    logger.info(f"Response body: {delete_response.text}")
 
     with allure.step('Проверяем что статус кода удаления == 200'):
         assert delete_response.status_code == 200
