@@ -99,6 +99,45 @@ def test_get_board(board_id):
 @allure.severity(Severity.NORMAL)
 @allure.label("owner", "Timur")
 @allure.feature("Работа с trello")
+@allure.story("Создание лейбла внутри доски")
+@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
+def test_create_label(board_id):
+    url = f"{BASE_URL}/1/boards/{board_id}/labels"
+    params = {
+        'name': "test123",
+        'key': os.getenv('KEY'),
+        'token': os.getenv('TOKEN'),
+        'color': "null"
+    }
+    response = requests.post(url, params=params)
+    with allure.step('Проверяем что статус кода == 200'):
+        assert response.status_code == 200
+
+
+@allure.tag("API")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Timur")
+@allure.feature("Работа с trello")
+@allure.story("Создание списка")
+@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
+def test_create_list(board_id):
+    url = f"{BASE_URL}/1/boards/{board_id}"
+    params = {
+        'name': "test123",
+        'idBoard': {board_id},
+        'key': os.getenv('KEY'),
+        'token': os.getenv('TOKEN')
+    }
+
+    response = requests.post(url, params=params)
+    with allure.step('Проверяем что после добавления статус-код == 200'):
+        assert response.status_code == 200
+
+
+@allure.tag("API")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Timur")
+@allure.feature("Работа с trello")
 @allure.story("Удаление доски")
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_delete_board(board_id):

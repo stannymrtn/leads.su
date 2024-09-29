@@ -5,6 +5,8 @@ from pages.leads_checker_page import phone_checker
 from pages.models.generation_token import generation_token
 from pages.offers_page import offer_page
 from pages.models.open_instruction_search import instructions
+from pages.models.postback_page import postback
+from pages.models.yandexmetrica_page import yandex_metric
 
 
 @allure.tag("web")
@@ -78,3 +80,36 @@ def test_instructions_page():
     authentication_form.pass_enter()
     instructions.search_field()
     instructions.check_search()
+
+
+@allure.tag("web")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Timur")
+@allure.feature("Страница с инструкцией для вебмастера")
+@allure.story("Тестирование строки поиска на странице инструкции вебмастера")
+@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
+def test_postback():
+    authentication_form.open()
+    authentication_form.pass_enter()
+    authentication_form.check_id()
+    postback.open_global_postback()
+    postback.transition_global_postback()
+    postback.create_global_postback()
+    postback.save_global_postback()
+
+
+@allure.tag("web")
+@allure.severity(Severity.NORMAL)
+@allure.label("owner", "Timur")
+@allure.feature("Страница с инструкцией для вебмастера")
+@allure.story("Тестирование строки поиска на странице инструкции вебмастера")
+@allure.link("http://webmaster.dev-qa.leads/", name="Testing")
+def test_ya_metric():
+    authentication_form.open()
+    authentication_form.pass_enter()
+    yandex_metric.open_metric_page()
+    yandex_metric.open_creation_modal_page()
+    yandex_metric.insert_type_fields()
+    yandex_metric.check_filtres_for_request()
+    yandex_metric.check_aff_sub()
+    yandex_metric.check_save()
