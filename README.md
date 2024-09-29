@@ -56,7 +56,8 @@
 <p align="center">
 <img title="Сборка в Jenkins с параметрами" src="resources/images/jenkins_parameters.png">
 </p>
-[Ссылка на джобу в jenkins](https://jenkins.autotests.cloud/job/for%20leads.su,%20latypov/)
+Ссылка на джобу в jenkins
+https://jenkins.autotests.cloud/job/for%20leads.su,%20latypov/
 
 ## Allure отчет
 >
