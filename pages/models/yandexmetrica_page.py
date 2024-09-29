@@ -6,7 +6,7 @@ class MetricYandex:
     @staticmethod
     def open_metric_page():
         with allure.step('Открытие страницы'):
-            browser.open('app/metric-transfer')
+            browser.open('/app/metric-transfer')
             browser.element('div.connection-list__header-container').should(be.visible)
 
     @staticmethod
