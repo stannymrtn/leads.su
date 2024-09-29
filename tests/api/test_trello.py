@@ -11,7 +11,7 @@ from jsonschema import validate
 
 BASE_URL = 'https://api.trello.com'
 
-# Настройка логирования
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
