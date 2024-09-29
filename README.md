@@ -56,6 +56,7 @@
 <p align="center">
 <img title="Сборка в Jenkins с параметрами" src="resources/images/jenkins_parameters.png">
 </p>
+[Ссылка на джобу в jenkins](https://jenkins.autotests.cloud/job/for%20leads.su,%20latypov/)
 
 ## Allure отчет
 >
@@ -68,6 +69,9 @@
 </p>
 <p align="center">
 <img title="Allure отчет" src="resources/images/allure-report_2.png">
+</p>
+<p align="center">
+<img title="Allure отчет" src="resources/images/allure-report_3.png">
 </p>
 
 ## Отчет в Telegram
