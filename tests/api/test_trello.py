@@ -124,7 +124,7 @@ def test_create_list(board_id):
     url = f"{BASE_URL}/1/boards/{board_id}"
     params = {
         'name': "test123",
-        'idBoard': {board_id},
+        'idBoard': board_id,
         'key': os.getenv('KEY'),
         'token': os.getenv('TOKEN')
     }
