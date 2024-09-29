@@ -121,7 +121,7 @@ def test_create_label(board_id):
 @allure.story("Создание списка")
 @allure.link("http://webmaster.dev-qa.leads/", name="Testing")
 def test_create_list(board_id):
-    url = f"{BASE_URL}/1/boards/{board_id}"
+    url = f"{BASE_URL}/1/lists"
     params = {
         'name': "test123",
         'idBoard': board_id,
