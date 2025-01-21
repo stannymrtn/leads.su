@@ -1,21 +1,22 @@
+import time
+
 from selene import browser, have, command
 import allure
 
 
-class Postback:
-    @staticmethod
-    def open_global_postback():
-        with allure.step("Вход на страницу глобального бостбэка"):
-            browser.open('/app/globalPostbacks')
 
-    @staticmethod
-    def transition_global_postback():
+class Postback:
+    def open_global_postback(self):
+        with allure.step("Вход на страницу глобального бостбэка"):
+            browser.open('app/globalPostbacks')
+
+    def transition_global_postback(self):
         with allure.step("Переход в создание глобального постбэка"):
+            time.sleep(5)
             button = browser.element('.lds-btn_bordered')
             button.click()
 
-    @staticmethod
-    def create_global_postback():
+    def create_global_postback(self):
         with allure.step("Переключение между 'Готовая ссылка' и 'Настроить вручную'"):
             browser.all('.leads-radio').element_by(have.exact_text('Готовая ссылка')).click()
             browser.all('.leads-radio').element_by(have.exact_text('Настроить вручную')).click()
@@ -68,10 +69,99 @@ class Postback:
             browser.element('.postback-page__result').should(
                 have.text('https://vk.com/?conversion_id={conversion_id}'))
 
-    @staticmethod
-    def save_global_postback():
+    def save_global_postback(self):
         with allure.step("Сохраняем постбэк"):
             browser.element('.postback-page__save-button').click()
+
+    def check_global_postback(self):
+        with allure.step("Проверяем что ранее заполненный постбэк создан"):
+            browser.element('.postback-global').should(
+                have.text('Автотест глобал постбэк'))
+
+    def open_offer_postback(self):
+        with allure.step("Вход на страницу постбэка для офферов"):
+            browser.open('app/offerPostbacks')
+
+    def transition_offer_postback(self):
+        with allure.step("Переход в создание постбэка для офферов"):
+            time.sleep(5)
+            button = browser.element('.lds-btn_bordered')
+            button.click()
+
+    def create_offer_postback(self):
+        with allure.step("Вводим название постбэка"):
+            browser.element('[type=text]').click().type(
+                'Автотест постбэк для оффера')
+
+        with allure.step("Выбираем оффер"):
+            browser.all('.lds-input-placeholder').element_by(have.text('Название или ID оффера')).click()
+            browser.all('[role=option]').element_by(have.text('288, offer_288')).click()
+
+        with allure.step("Выбираем цель"):
+            browser.all('.lds-input-placeholder').element_by(have.text('Цель')).click()
+            browser.all('[role=option]').element_by(have.text('3644, goal_3644')).click()
+
+        with allure.step("Вводим название базовой ссылки"):
+            browser.element('.lds-input-placeholder_tooltip').element('[type=text]').click().type('https://vk.com/')
+
+        with allure.step("Проверка работы чекбокса 'Не отправлять глобальный postback по этому офферу'"):
+            browser.element('#ignore-global-postback').click()
+            browser.element('#ignore-global-postback').click()
+            browser.element('#ignore-global-postback').click()
+
+        with allure.step("Выбираем 'Статус конверсии' и 'Тип события'"):
+            browser.element('#conversion-status-pending').click()
+            browser.element('#conversion-status-approved').click()
+            browser.element('#conversion-status-rejected').click()
+            browser.element('#conversion-event-created').click()
+            browser.element('#conversion-event-payout-updated').click()
+            browser.element('#conversion-event-updated').click()
+            browser.element('#conversion-status-pending').click()
+            browser.element('#conversion-status-approved').click()
+            browser.element('#conversion-status-rejected').click()
+            browser.element('#conversion-event-created').click()
+            browser.element('#conversion-event-payout-updated').click()
+            browser.element('#conversion-event-updated').click()
+            browser.element('#conversion-status-pending').click()
+            browser.element('#conversion-status-approved').click()
+            browser.element('#conversion-status-rejected').click()
+            browser.element('#conversion-event-created').click()
+            browser.element('#conversion-event-payout-updated').click()
+            browser.element('#conversion-event-updated').click()
+
+        with allure.step("Выбираем HTTP-метод отправки"):
+            browser.all('.leads-radio__label').element_by(have.exact_text('GET')).click()
+            browser.all('.leads-radio__label').element_by(have.exact_text('POST')).click()
+            browser.all('.leads-radio__label').element_by(have.exact_text('GET')).click()
+
+        with allure.step("Добавляем группу условий"):
+            browser.all('.lds-btn').element_by(have.text('+ Добавить группу условий')).click()
+            browser.all('.lds-input-placeholder').element_by(have.text('Параметр')).click()
+            browser.all('[role=option]').element_by(have.text('Площадка')).click()
+            browser.all('.lds-input-placeholder').element_by(have.text('Условие')).click()
+            browser.all('[role=option]').element_by(have.text('= Равно')).click()
+            browser.element('.condition-fields').element('[type=text]').click().type('Тест')
+
+        with allure.step("Добавляем параметры"):
+            browser.element('.push-fields').perform(command.js.scroll_into_view)
+            browser.all('.lds-input-placeholder').element_by(have.text('Название метки')).click()
+            browser.all('[role=option]').element_by(have.text('conversion_id')).click()
+
+    def save_offer_postback(self):
+        with allure.step("Сохраняем постбэк"):
+            browser.element('.postback-page__save-button').click()
+
+    def check_offer_postback(self):
+        with allure.step("Проверяем что ранее заполненный постбэк создан"):
+            browser.element('.postback-offers').should(
+                have.text('Автотест постбэк для оффера'))
+
+
+    def create_test_postback(self):
+        with (allure.step("Переход в тестовый постбэк")):
+            time.sleep(5)
+
+            browser.all('.dropdown-menu__item').element_by(have.text('Тестовый постбек')).click()
 
 
 postback = Postback()

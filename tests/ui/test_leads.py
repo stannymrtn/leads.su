@@ -96,6 +96,13 @@ def test_postback():
     postback.transition_global_postback()
     postback.create_global_postback()
     postback.save_global_postback()
+    postback.check_global_postback()
+    postback.open_offer_postback()
+    postback.transition_offer_postback()
+    postback.create_offer_postback()
+    postback.save_offer_postback()
+    postback.check_global_postback()
+    postback.create_test_postback()
 
 
 @allure.tag("web")
