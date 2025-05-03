@@ -1,3 +1,4 @@
+import os
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -35,8 +36,11 @@ def setup_browser(request):
 
     options.capabilities.update(selenoid_capabilities)
 
+    # Получаем адрес Selenoid из переменной окружения или используем значение по умолчанию
+    selenoid_url = os.getenv('SELENOID_URL', 'http://localhost:4444/wd/hub')
+
     driver = webdriver.Remote(
-        command_executor='http://localhost:4444/wd/hub',
+        command_executor=selenoid_url,
         options=options
     )
 
