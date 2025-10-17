@@ -7,7 +7,7 @@ class OffersPage:
         def open_page():
             with allure.step('Открытие каталога офферов'):
                 browser.open('/offers/default')
-                browser.element('//div[contains(text(), "Список офферов")]').should(be.visible)
+                browser.element('//div[contains(text(), "Доступные офферы")]').should(be.visible)
 
         @staticmethod
         def scroll_page():
