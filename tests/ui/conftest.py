@@ -48,7 +48,7 @@ def setup_browser(request):
         options=options
     )
 
-    browser.config.base_url = 'https://webmaster.leads.su'
+    browser.config.base_url = 'http://webmaster.dev-qa.leads'
     browser.config.window_width = 1920
     browser.config.window_height = 1080
     browser.config.driver = driver
