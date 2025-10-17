@@ -22,7 +22,7 @@ print(f"SELENOID_PASS = {selenoid_pass}")
 
 @pytest.fixture(scope='function', autouse=True)
 def setup_browser(request):
-    browser_version = request.config.getoption('--browser_version', default='100.0')
+    browser_version = request.config.getoption('--browser_version', default='127.0')
 
     options = Options()
 
