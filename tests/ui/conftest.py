@@ -8,12 +8,12 @@ from dotenv import load_dotenv
 from utils.script_os import TMP_DIR
 
 
-@pytest.fixture(scope='session', autouse=True)
-def load_env():
-    load_dotenv()
+
+load_dotenv()
 selenoid_login = os.getenv("SELENOID_LOGIN")
 selenoid_pass = os.getenv("SELENOID_PASS")
 selenoid_url = os.getenv("SELENOID_URL")
+
 
 
 @pytest.fixture(scope='function', autouse=True)
